@@ -24,6 +24,114 @@ a:hover,a:focus{
   border-radius: 0 0 20px 20px;
   border-style: ridge;
   border-color: #2e3a6a;
+
+      // nav-tabs styles
+      .nav-tabs{
+        border-bottom: none;
+        position: relative;
+      }
+
+      .nav-tabs li a:hover{ background: transparent; }
+      .nav-tabs li.active a,
+      .nav-tabs li.active a:focus,
+      .nav-tabs li.active a:hover{
+        border: none;
+        background: transparent;
+        opacity: 1;
+        border-bottom: 2px solid @color-yellow;
+        color: @color-white;
+      }
+
+
+      .nav-tabs li{ margin: 0 30px 0 0; }
+      .nav-tabs li a{
+        font-size: 18px;
+        color: @color-white;
+        border-radius: 0;
+        text-transform: uppercase;
+        background: transparent;
+        padding: 0;
+        margin-right: 0;
+        border: none;
+        border-bottom: 2px solid transparent;
+        opacity: 0.5;
+        position: relative;
+        transition: all 0.5s ease 0s;
+      }
+
+            // tab-content styles
+            .tab-content{
+              padding: 20px 0 0 0;
+              margin-top: 30px;
+              background: transparent;
+              z-index: 1;
+              position: relative;
+
+
+                    // form-group styles
+                    .form-group{
+                      margin: 0 0 15px 0;
+                      position: relative;
+                    }
+
+                    // form-control styles
+                    .form-control{
+                      height: 40px;
+                      background: rgba(255,255,255,0.2);
+                      border: none;
+                      border-radius: 20px;
+                      box-shadow: none;
+                      padding: 0 20px;
+                      font-size: 14px;
+                      font-weight: bold;
+                      color: @color-white;
+                      transition: all 0.3s ease 0s;
+                      //text-transform: capitalize;
+                    }
+
+                    .form-control:focus{
+                      box-shadow: none;
+                      outline: 0 none;
+                    }
+
+                    // All labels
+                    label{
+                      padding: 0 20px;
+                      color: @color-white;
+                      //text-transform: capitalize;
+                      margin-bottom: 10px;
+                    }
+
+                    // Option in #countrySelect
+                    option{
+                      color:@color-white;
+                      background:#5a456d;
+                      border-radius: 20px;
+                      outline:none;
+                    }
+
+                    // Button in secondary panel #countryBtn
+                    .btn{
+                      width: 100%;
+                      background: @color-yellow;
+                      padding: 10px 20px;
+                      border: none;
+                      font-size: 14px;
+                      font-weight: bold;
+                      color: @color-white;
+                      border-radius: 20px;
+                      text-transform: uppercase;
+                      margin: 20px 0 0 0;
+                    }
+                    .btn:focus{
+                      background: @color-yellow;
+                      color: @color-white;
+                      outline: none;
+                      box-shadow: none;
+                    }
+
+                    .btn:hover{  background: #666600;}
+            }
 }
 
 .tab:before{
@@ -38,113 +146,6 @@ a:hover,a:focus{
   opacity: 0.85;
   border-radius: 0 0 20px 20px;
 }
-
-// nav-tabs styles
-.tab .nav-tabs{
-  border-bottom: none;
-  position: relative;
-}
-
-.tab .nav-tabs li{ margin: 0 30px 0 0; }
-.tab .nav-tabs li a{
-  font-size: 18px;
-  color: @color-white;
-  border-radius: 0;
-  text-transform: uppercase;
-  background: transparent;
-  padding: 0;
-  margin-right: 0;
-  border: none;
-  border-bottom: 2px solid transparent;
-  opacity: 0.5;
-  position: relative;
-  transition: all 0.5s ease 0s;
-}
-.tab .nav-tabs li a:hover{ background: transparent; }
-.tab .nav-tabs li.active a,
-.tab .nav-tabs li.active a:focus,
-.tab .nav-tabs li.active a:hover{
-  border: none;
-  background: transparent;
-  opacity: 1;
-  border-bottom: 2px solid @color-yellow;
-  color: @color-white;
-}
-
-
-// tab-content styles
-.tab .tab-content{
-  padding: 20px 0 0 0;
-  margin-top: 30px;
-  background: transparent;
-  z-index: 1;
-  position: relative;
-}
-
-
-// form-group styles
-.tab-content .form-group{
-  margin: 0 0 15px 0;
-  position: relative;
-}
-
-// form-control styles
-.tab-content .form-control{
-  height: 40px;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  border-radius: 20px;
-  box-shadow: none;
-  padding: 0 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: @color-white;
-  transition: all 0.3s ease 0s;
-  //text-transform: capitalize;
-}
-
-.tab-content .form-control:focus{
-  box-shadow: none;
-  outline: 0 none;
-}
-
-// All labels
-.tab-content label{
-  padding: 0 20px;
-  color: @color-white;
-  //text-transform: capitalize;
-  margin-bottom: 10px;
-}
-
-// Option in #countrySelect
-.tab-content option{
-  color:@color-white;
-  background:#5a456d;
-  border-radius: 20px;
-  outline:none;
-}
-
-// Button in secondary panel #countryBtn
-.tab-content .btn{
-  width: 100%;
-  background: @color-yellow;
-  padding: 10px 20px;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: @color-white;
-  border-radius: 20px;
-  text-transform: uppercase;
-  margin: 20px 0 0 0;
-}
-.tab-content .btn:focus{
-  background: @color-yellow;
-  color: @color-white;
-  outline: none;
-  box-shadow: none;
-}
-
-.tab-content .btn:hover{  background: #666600;}
 
 // Classes for JS
 .error {
