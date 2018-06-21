@@ -1,37 +1,53 @@
-function validate_country() {
+/*
+    Валидация ввода стран
+    return false - если валидация не прошла
+*/
+function validateCountry() {
     var pattern = /^[А-ЯЁ]{1}[А-Яа-яЁё-]{2,50}$/;
     var pattern_hyphen = /-{2,}/;
 
     var country_input = $('#country');
     var country_btn = $('#countryBtn');
 
-    if (country_input.val().search(pattern) == 0 && country_input.val().search(pattern_hyphen) == -1 )
+    // проверка на (Кирилицу и первую заглавную) и (количество повторяющих дефисов)
+    if (country_input.val().search(pattern) == 0 && country_input.val().search(pattern_hyphen) == -1)
     {
         country_btn.attr('disabled', true).text('Отправка');
     }
-    else
+    else // вывод tooltip-а и красного обода вокруг input-а в течентт 1-2 сек
     {
         country_input.addClass('error');
         setTimeout(function() {
-            country_input.removeClass('error');}, 1000);
+                    country_input.removeClass('error');}, 1000);
 
         country_input.tooltip('show');
-        setTimeout(function() {
-            country_input.tooltip('hide');}, 2000);
+                    setTimeout(function() {
+                    country_input.tooltip('hide');}, 2000);
 
         return false;
     }
 
 }
 
-function enable_countryBtn() {
-    setTimeout(function() {$(".modal").modal('hide'); }, 3000);
-    $('#countryBtn').attr('disabled', false).text('Добавить');
-}
+/*
+    Закрытие модального окна
+    и изменение (текста и свойства disable) кнопки добавления страны
+*/
+function enableCountryBtn()
+            {
+                 setTimeout(function() {
+                            $(".modal").modal('hide'); }, 3000);
+                            $('#countryBtn').attr('disabled', false).text('Добавить');
+            }
 
-function add_country() {
 
-   if (validate_country() == false)
+/*
+    Фунция добавления страны через ajax
+    return false -  если не прошла валидацию
+*/
+function addCountry() {
+
+   if (validateCountry() == false)
    {
        return false;
    }
@@ -50,14 +66,14 @@ function add_country() {
                if (mas == true)
                {
                    alert(country + " уже существует. Напишите другое название!");
-                   enable_countryBtn();
+                   enableCountryBtn();
                }
                else
                {
                    $('#modal_info').modal('show',true);
-                   enable_countryBtn();
+                   enableCountryBtn();
                    country = "";
-                   select_country();
+                   selectCountry();
                }
 
            },
@@ -68,7 +84,10 @@ function add_country() {
    }
 }
 
-function select_country()
+/*
+    Фунция получения стран через ajax и вывода в селект
+*/
+function selectCountry()
 {
     $('#countrySelect option').remove();
 
@@ -94,7 +113,9 @@ function select_country()
     });
 }
 
-
+/*
+    Вывод стран в селект при загрузки страницы
+*/
 $(document).ready(function () {
-    select_country();
+    selectCountry();
 });
