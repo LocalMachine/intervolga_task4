@@ -2,6 +2,10 @@
 require_once 'main.php';
 $db = new Database();
 
+/**
+ * Добавление страны в базу
+ * Проверка на совпадения названия страны
+ */
 if (isset($_POST['act']) && $_POST['act'] === 'add_country') {
 
     $country = trim($_POST['country']);
@@ -21,6 +25,10 @@ if (isset($_POST['act']) && $_POST['act'] === 'add_country') {
 
 }
 
+
+/**
+ * Вывод стран
+ */
 if (isset($_POST['act']) && $_POST['act'] === 'select_country') {
 
     @$country = $db->query("SELECT * FROM `country` ORDER BY `name` ASC ");

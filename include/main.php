@@ -9,6 +9,10 @@ class Database
         $this->connect();
     }
 
+    /**
+     * Подключение к MySql через PDO
+     * @return $this
+     */
     private function connect()
     {
         $config = require_once 'db_connect.php';
@@ -23,6 +27,11 @@ class Database
         return $this;
     }
 
+    /**
+     * Шифрование
+     * @param $country - входящая переменная (страна), которая будет зашифрована
+     * @return string - результат шифрования
+     */
     private function encryptData($country)
     {
         $key = "85406564D4AE5BC5880A7261";
@@ -35,6 +44,11 @@ class Database
         return $new_encryption;
     }
 
+    /**
+     * Расшифровка
+     * @param $country - входящая переменная (страна), которая будет расшифрована
+     * @return string - результат расшифровки
+     */
     private function decryptData($country)
     {
         $key = "85406564D4AE5BC5880A7261";
@@ -48,7 +62,13 @@ class Database
     }
 
 
-    public function execute($sql,$placeholder)
+    /**
+     * Запрос к базе данныз для добавления
+     * @param $sql - входящий SQL запрос
+     * @param $placeholder - входящий массив плейсхолдеров
+     * @return mixed - результат SQL запроса
+     */
+    public function execute($sql, $placeholder)
     {
         $encrypt_country = $this->encryptData($placeholder);
         $sth = $this->link->prepare($sql);
@@ -56,6 +76,11 @@ class Database
         return $sth->execute(array($encrypt_country));
     }
 
+    /**
+     * Запрос к базе данныз для выборки
+     * @param $sql - входящий SQL запрос
+     * @return array результат SQL запроса в виде многомерного ассоциативного массива
+     */
     public function query($sql)
     {
         $sth = $this->link->prepare($sql);
